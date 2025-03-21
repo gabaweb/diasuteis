@@ -88,6 +88,8 @@ h1 {
 .current-month {
     font-weight: bold;
     color: #333;
+    text-align: center;
+    flex-grow: 1;
 }
 
 .weekdays {

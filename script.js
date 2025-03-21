@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             monthTitle.className = 'current-month';
             const monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
                               'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-            monthTitle.textContent = `${monthNames[month]} ${year}`;
+            monthTitle.textContent = `${monthNames[month]}`;
             
             header.appendChild(monthTitle);
             this.container.appendChild(header);
@@ -434,8 +434,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 let jurisdiction = '';
                 if (isNational) jurisdiction += '<span class="holiday-badge national">Nacional</span>';
-                if (isMunicipal) jurisdiction += (jurisdiction ? ' ' : '') + '<span class="holiday-badge municipal">Municipal</span>';
-                if (isState) jurisdiction += (jurisdiction ? ' ' : '') + '<span class="holiday-badge state">Estadual</span>';
+                if (isMunicipal) jurisdiction += (jurisdiction ? ' ' : '') + '<span class="holiday-badge municipal">Municipal (São Paulo)</span>';
+                if (isState) jurisdiction += (jurisdiction ? ' ' : '') + '<span class="holiday-badge state">Estadual (SP)</span>';
                 if (!isNational && !isMunicipal && !isState) jurisdiction = '<span class="holiday-badge personal">Folga</span>';
                 
                 tr.innerHTML = `
