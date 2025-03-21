@@ -1,0 +1,446 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.container {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    max-width: 1000px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.calendar {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0.75rem;
+    width: 100%;
+    min-width: 250px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.calendar-header button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    color: #4CAF50;
+    padding: 0.25rem;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-header button:hover {
+    background-color: #f0f0f0;
+}
+
+.current-month {
+    font-weight: bold;
+    color: #333;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.weekdays div {
+    padding: 0.25rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25rem;
+}
+
+.day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+    border: 1px solid transparent;
+    font-size: 0.9rem;
+}
+
+.day.selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.day.selected.in-range {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.day.in-range {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.day.weekend {
+    border-color: #ff4444;
+}
+
+.day.weekend.in-range {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.day.weekend.selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.day.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.day.holiday {
+    border-color: #FF9800;
+}
+
+.day.personal-holiday {
+    border-color: #2196F3;
+}
+
+.day.holiday.in-range {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.day.personal-holiday.in-range {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.day.holiday.selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.day.personal-holiday.selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.day.today {
+    font-weight: bold;
+}
+
+.day.today.selected {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.day.today.in-range {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.day.today.holiday {
+    border-color: #FF9800;
+}
+
+.day.today.personal-holiday {
+    border-color: #2196F3;
+}
+
+.day.today.weekend {
+    border-color: #ff4444;
+}
+
+.day.overtime {
+    border-color: #9C27B0;
+}
+
+.day.today.overtime {
+    border-color: #9C27B0;
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.mode-button {
+    background-color: #fff;
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 350px;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 45px;
+}
+
+.mode-button.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.mode-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    width: 24px;
+    text-align: center;
+}
+
+.result {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.result h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+}
+
+.result p {
+    color: #333;
+    font-size: 1.1rem;
+}
+
+#working-days, #working-hours {
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+#holidays-list {
+    margin-top: 1rem;
+    text-align: left;
+    display: none;
+}
+
+#holidays-list.has-selection {
+    display: block;
+}
+
+#holidays-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+}
+
+#holidays-table th,
+#holidays-table td {
+    padding: 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.9rem;
+}
+
+#holidays-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #333;
+}
+
+#holidays-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+#holidays-table td:first-child {
+    font-weight: 500;
+}
+
+#holidays-table td:nth-child(2) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    justify-content: center;
+}
+
+#holidays-table td:last-child {
+    color: #333;
+}
+
+#holidays-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+#holidays-list li {
+    padding: 0.25rem 0;
+    color: #666;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.holiday-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: white;
+    margin: 0.125rem;
+}
+
+.holiday-badge.national,
+.holiday-badge.municipal,
+.holiday-badge.state {
+    background-color: #FF9800;
+}
+
+.holiday-badge.personal:not(.overtime) {
+    background-color: #2196F3;
+}
+
+.holiday-badge.overtime {
+    background-color: #9C27B0;
+}
+
+.hours-per-day {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.hours-per-day label {
+    color: #333;
+    font-size: 1rem;
+}
+
+.hours-per-day input {
+    width: 60px;
+    padding: 0.25rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.hours-per-day input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+#holidays-table-body .no-holidays {
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .calendar-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .calendar-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.year-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem;
+}
+
+.year-navigation button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #4CAF50;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.year-navigation button:hover {
+    background-color: #f0f0f0;
+}
+
+.current-year {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    min-width: 80px;
+    text-align: center;
+} 

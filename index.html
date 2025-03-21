@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Dias Úteis</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Dias Úteis</h1>
+        <div class="calculator">
+            <div class="controls">
+                <button id="holiday-mode" class="mode-button">
+                    <span class="mode-text">Editar</span>
+                </button>
+                <button id="clear-selection" class="mode-button">
+                    <span class="mode-text">Limpar</span>
+                </button>
+            </div>
+            <div class="year-navigation">
+                <button class="prev-year">&lt;</button>
+                <span class="current-year"></span>
+                <button class="next-year">&gt;</button>
+            </div>
+            <div class="calendar-container">
+                <div class="calendar-grid">
+                    <div class="calendar" id="calendar-0"></div>
+                    <div class="calendar" id="calendar-1"></div>
+                    <div class="calendar" id="calendar-2"></div>
+                    <div class="calendar" id="calendar-3"></div>
+                    <div class="calendar" id="calendar-4"></div>
+                    <div class="calendar" id="calendar-5"></div>
+                    <div class="calendar" id="calendar-6"></div>
+                    <div class="calendar" id="calendar-7"></div>
+                    <div class="calendar" id="calendar-8"></div>
+                    <div class="calendar" id="calendar-9"></div>
+                    <div class="calendar" id="calendar-10"></div>
+                    <div class="calendar" id="calendar-11"></div>
+                </div>
+            </div>
+            <div class="result">
+                <h3>Resultado</h3>
+                <div class="hours-per-day">
+                    <label for="hours-per-day">Horas úteis por dia:</label>
+                    <input type="number" id="hours-per-day" min="1" max="24" value="8" step="0.5">
+                </div>
+                <p>Dias úteis: <span id="working-days">0</span></p>
+                <p>Horas úteis: <span id="working-hours">0</span></p>
+                </div>
+                <div id="holidays-list" class="result">
+                    <h3>Feriados e Folgas</h3>
+                    <table id="holidays-table">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Tipo</th>
+                                <th>Nome</th>
+                            </tr>
+                        </thead>
+                        <tbody id="holidays-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
