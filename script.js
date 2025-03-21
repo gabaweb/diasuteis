@@ -373,8 +373,8 @@ document.addEventListener('DOMContentLoaded', () => {
         isHolidayMode = !isHolidayMode;
         holidayModeButton.classList.toggle('active');
         holidayModeButton.textContent = isHolidayMode ? 
-            'Parar Edição' : 
-            'Editar';
+            'Desativar Edição' : 
+            'Ativar Edição';
     });
 
     // Update the clear selection button handler
